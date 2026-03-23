@@ -1,8 +1,12 @@
 const { Sequelize } = require('sequelize')
+
+const dbHostUrl = process.env.DB_HOST_URL || 'localhost';
+const dbPort = process.env.DB_PORT || 5432;
+
 const sequelize = new Sequelize('gov_empresas_data','postgres','lima068',{
-    host:'localhost',
+    host:dbHostUrl,
     dialect:'postgres',
-    port: 5432,
+    port: dbPort,
     logging: false,
     pool: {
     max: 60,     // Máximo de conexões abertas simultaneamente
