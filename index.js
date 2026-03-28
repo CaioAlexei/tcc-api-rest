@@ -1,14 +1,20 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const Empresa = require('./models/empresas');
 const Estabelecimento = require('./models/estabelecimentos');
 const Socio = require('./models/socios');
 const Simples = require('./models/dados_do_simples');
+
+
+const api_port = process.env.API_PORT;
+
+
 app.use(express.json());
 
 // Testar conexão ao iniciar
 
-app.listen(3005, () => {
+app.listen(api_port, () => {
     console.log('Servidor rodando na porta 3005');
 });
 
@@ -37,7 +43,7 @@ app.get('/empresas', async (req, res) => {
     };
 
     try {
-            // Isso vai gerar: SELECT num_cnpj, razao_social FROM tb_empresas_brasil;
+            
             const lista = await Empresa.findByPk(cnpj,{
             include: joins,
             logging: false,

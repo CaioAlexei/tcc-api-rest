@@ -1,11 +1,18 @@
 const { Sequelize } = require('sequelize')
 
-const dbHostUrl = process.env.DB_HOST_URL || 'localhost';
-const dbPort = process.env.DB_PORT || 5432;
+const dbHostUrl = process.env.DB_HOST_URL;
+const dbPort = process.env.DB_PORT;
+const dbDatabase = process.env.DB_NAME;
+const dbUsername = process.env.DB_USERNAME;
+const dbPassword = process.env.DB_PASSWORD;
+const dbDialect = process.env.DB_DIALECT;
 
-const sequelize = new Sequelize('gov_empresas_data','postgres','lima068',{
+
+
+
+const sequelize = new Sequelize(dbDatabase,dbUsername,dbPassword,{
     host:dbHostUrl,
-    dialect:'postgres',
+    dialect:dbDialect,
     port: dbPort,
     logging: false,
     pool: {
