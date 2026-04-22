@@ -16,7 +16,7 @@ const sequelize = new Sequelize(dbDatabase,dbUsername,dbPassword,{
     port: dbPort,
     logging: false,
     pool: {
-    max: 60,     // Máximo de conexões abertas simultaneamente
+    max: 1000,     // Máximo de conexões abertas simultaneamente
     min: 10,      // Mínimo (pode fechar todas se ninguém usar)
     acquire: 30000, // Tempo máximo (ms) tentando pegar uma conexão antes de dar erro
     idle: 10000     // Tempo (ms) que uma conexão pode ficar inativa antes de ser fechada
