@@ -33,10 +33,10 @@ app.get('/empresas', async (req, res) => {
     };
 
     if(estabelecimentos == 1){
-        joins.push({ model: Estabelecimento });
+        joins.push({ model: Estabelecimento, separate: true });
     };
     if(socios == 1){
-        joins.push({ model: Socio });
+        joins.push({ model: Socio, separate: true });
     };
     if(simples == 1){
         joins.push({ model: Simples });
